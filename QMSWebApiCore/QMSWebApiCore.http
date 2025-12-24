@@ -1,0 +1,6 @@
+@QMSWebApiCore_HostAddress = http://localhost:5129
+
+GET {{QMSWebApiCore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

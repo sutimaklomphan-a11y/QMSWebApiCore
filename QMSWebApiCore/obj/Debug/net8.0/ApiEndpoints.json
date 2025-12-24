@@ -1,0 +1,180 @@
+[
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "GetAllGates",
+    "RelativePath": "api/GateIn",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "GetGateInByBarcode",
+    "RelativePath": "api/GateIn/{Barcode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Barcode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "GetGateInByDetail",
+    "RelativePath": "api/GateIn/{id}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Gate_id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "UpdateGateIn",
+    "RelativePath": "api/GateIn/barcode/{barcode}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "barcode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "ClsGateIn",
+        "Type": "QMSWebApiCore.Models.GateIn",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "GateIn",
+    "RelativePath": "api/GateIn/StampGateIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "GT",
+        "Type": "QMSWebApiCore.Models.GateIn",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
+    "Method": "Get",
+    "RelativePath": "api/GateOut",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QMSWebApiCore.Models.WeatherForecast, QMSWebApiCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GateOutDetail"
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.LoadOnDockController",
+    "Method": "Get",
+    "RelativePath": "LoadOnDock",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QMSWebApiCore.Models.WeatherForecast, QMSWebApiCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "LoadOnDock"
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.LoadOnDockController",
+    "Method": "StampGateIn",
+    "RelativePath": "LoadOnDock/StampGateIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "GateIn",
+        "Type": "QMSWebApiCore.Models.M_Gate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Net.Http.HttpResponseMessage",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QMSWebApiCore.Models.WeatherForecast, QMSWebApiCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

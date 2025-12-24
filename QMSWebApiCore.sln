@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QMSWebApiCore", "QMSWebApiCore\QMSWebApiCore.csproj", "{14C2CDEE-24E2-4189-907E-7587924DE346}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14C2CDEE-24E2-4189-907E-7587924DE346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C2CDEE-24E2-4189-907E-7587924DE346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C2CDEE-24E2-4189-907E-7587924DE346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C2CDEE-24E2-4189-907E-7587924DE346}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {533BFD5C-7233-45CF-8D31-916690267488}
+	EndGlobalSection
+EndGlobal
