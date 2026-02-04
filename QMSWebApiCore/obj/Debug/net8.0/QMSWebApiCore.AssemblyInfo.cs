@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QMSWebApiCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b730130fa0daa3e6de8cb6b00a433aaf1fbed53d")]
 [assembly: System.Reflection.AssemblyProductAttribute("QMSWebApiCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QMSWebApiCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

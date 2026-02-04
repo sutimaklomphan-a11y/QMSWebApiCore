@@ -1,18 +1,66 @@
 [
   {
-    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
-    "Method": "GetAllGates",
-    "RelativePath": "api/GateIn",
+    "ContainingType": "QMSWebApiCore.Controllers.EDPInController",
+    "Method": "SearchEDPInByBarcode",
+    "RelativePath": "api/EDPIn/SearchEDPInByBarcode/{DCcode}/{Barcode}/{ActionDate}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "DCcode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "barcode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "ActionDate",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "DeleteGateIn",
+    "RelativePath": "api/v1/GateIn/DeleteGateIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ClsGateIn",
+        "Type": "QMSWebApiCore.Models.M_GateIn",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "GetAllGates",
+    "RelativePath": "api/v1/GateIn/SearchGateIn/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "QMSWebApiCore.Controllers.GateInController",
     "Method": "GetGateInByBarcode",
-    "RelativePath": "api/GateIn/{Barcode}",
+    "RelativePath": "api/v1/GateIn/SearchGateInByBarcode/{Barcode}/{DCCode}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -21,52 +69,10 @@
         "Name": "Barcode",
         "Type": "System.String",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
-    "Method": "GetGateInByDetail",
-    "RelativePath": "api/GateIn/{id}/{DCCode}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Gate_id",
-        "Type": "System.Int32",
-        "IsRequired": false
       },
       {
         "Name": "DCCode",
         "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
-    "Method": "UpdateGateIn",
-    "RelativePath": "api/GateIn/barcode/{barcode}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "barcode",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "ClsGateIn",
-        "Type": "QMSWebApiCore.Models.GateIn",
         "IsRequired": true
       }
     ],
@@ -75,14 +81,30 @@
   {
     "ContainingType": "QMSWebApiCore.Controllers.GateInController",
     "Method": "GateIn",
-    "RelativePath": "api/GateIn/StampGateIn",
+    "RelativePath": "api/v1/GateIn/StampGateIn",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "GT",
-        "Type": "QMSWebApiCore.Models.GateIn",
+        "Name": "ClsGateIn",
+        "Type": "QMSWebApiCore.Models.M_GateIn",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "UpdateGateIn",
+    "RelativePath": "api/v1/GateIn/UpdateGateIn",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ClsGateIn",
+        "Type": "QMSWebApiCore.Models.M_GateIn",
         "IsRequired": true
       }
     ],
@@ -90,24 +112,88 @@
   },
   {
     "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
-    "Method": "Get",
-    "RelativePath": "api/GateOut",
+    "Method": "DeleteGateIn",
+    "RelativePath": "api/v1/GateOut/DeleteGateIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ClsGateOut",
+        "Type": "QMSWebApiCore.Models.M_GateOut",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
+    "Method": "GetAllGateOut",
+    "RelativePath": "api/v1/GateOut/SearchGateOut/{DCCode}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[QMSWebApiCore.Models.WeatherForecast, QMSWebApiCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
       }
     ],
-    "EndpointName": "GateOutDetail"
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
+    "Method": "GetGateOutByBarcode",
+    "RelativePath": "api/v1/GateOut/SearchGateOutByBarcode/{Barcode}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Barcode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
+    "Method": "StampGateOut",
+    "RelativePath": "api/v1/GateOut/StampGateOut",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ClsGateOut",
+        "Type": "QMSWebApiCore.Models.M_GateOut",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
+    "Method": "StampGateOutDirect",
+    "RelativePath": "api/v1/GateOut/StampGateOutDirect",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ClsGateOut",
+        "Type": "QMSWebApiCore.Models.M_GateOut",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "QMSWebApiCore.Controllers.LoadOnDockController",

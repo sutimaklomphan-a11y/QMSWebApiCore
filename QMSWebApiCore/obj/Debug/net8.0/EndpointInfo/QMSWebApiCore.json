@@ -5,10 +5,36 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/GateIn": {
+    "/api/EDPIn/SearchEDPInByBarcode/{DCcode}/{Barcode}/{ActionDate}": {
       "get": {
         "tags": [
-          "GateIn"
+          "EDPIn"
+        ],
+        "parameters": [
+          {
+            "name": "DCcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ActionDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -17,7 +43,29 @@
         }
       }
     },
-    "/api/GateIn/{Barcode}": {
+    "/api/v1/GateIn/SearchGateIn/{DCCode}": {
+      "get": {
+        "tags": [
+          "GateIn"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/SearchGateInByBarcode/{Barcode}/{DCCode}": {
       "get": {
         "tags": [
           "GateIn"
@@ -30,6 +78,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -39,18 +95,133 @@
         }
       }
     },
-    "/api/GateIn/{id}/{DCCode}": {
-      "get": {
+    "/api/v1/GateIn/StampGateIn": {
+      "post": {
         "tags": [
           "GateIn"
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/UpdateGateIn": {
+      "put": {
+        "tags": [
+          "GateIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/DeleteGateIn": {
+      "post": {
+        "tags": [
+          "GateIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/SearchGateOut/{DCCode}": {
+      "get": {
+        "tags": [
+          "GateOut"
+        ],
         "parameters": [
           {
-            "name": "Gate_id",
-            "in": "query",
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/SearchGateOutByBarcode/{Barcode}/{DCCode}": {
+      "get": {
+        "tags": [
+          "GateOut"
+        ],
+        "parameters": [
+          {
+            "name": "Barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -60,14 +231,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -77,113 +240,95 @@
         }
       }
     },
-    "/api/GateIn/StampGateIn": {
+    "/api/v1/GateOut/StampGateOut": {
       "post": {
-        "tags": [
-          "GateIn"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GateIn"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GateIn"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/GateIn"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/GateIn/barcode/{barcode}": {
-      "post": {
-        "tags": [
-          "GateIn"
-        ],
-        "parameters": [
-          {
-            "name": "barcode",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GateIn"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GateIn"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/GateIn"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/GateOut": {
-      "get": {
         "tags": [
           "GateOut"
         ],
-        "operationId": "GateOutDetail",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/StampGateOutDirect": {
+      "post": {
+        "tags": [
+          "GateOut"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/DeleteGateIn": {
+      "post": {
+        "tags": [
+          "GateOut"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -317,120 +462,6 @@
   },
   "components": {
     "schemas": {
-      "GateIn": {
-        "type": "object",
-        "properties": {
-          "gateInDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "gateOutDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "createdDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "createdBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "actionDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "actionBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "updatedBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "updatedDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "licenseTruck": {
-            "type": "string",
-            "nullable": true
-          },
-          "rsuStatusID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "rsuid": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "edpStatusID": {
-            "type": "string",
-            "nullable": true
-          },
-          "rsuStatusText": {
-            "type": "string",
-            "nullable": true
-          },
-          "barcode": {
-            "type": "string",
-            "nullable": true
-          },
-          "gateInRemark": {
-            "type": "string",
-            "nullable": true
-          },
-          "gateOutRemark": {
-            "type": "string",
-            "nullable": true
-          },
-          "driverName": {
-            "type": "string",
-            "nullable": true
-          },
-          "gateStatus": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "truckTypeID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "truckTypeText": {
-            "type": "string",
-            "nullable": true
-          },
-          "truckTypeName": {
-            "type": "string",
-            "nullable": true
-          },
-          "truckTypeStyle": {
-            "type": "string",
-            "nullable": true
-          },
-          "truckTypeImage": {
-            "type": "string",
-            "nullable": true
-          },
-          "gateID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "dcCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "flag": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
       "HttpContent": {
         "type": "object",
         "properties": {
@@ -716,6 +747,222 @@
             "nullable": true
           },
           "gateID": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_GateIn": {
+        "type": "object",
+        "properties": {
+          "gate_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gateInDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "gateOutDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "licenseTruck": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rsuid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "edpStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateInRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateOutRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "driverName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "truckTypeID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "truckTypeText": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dcCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "flag": {
+            "type": "boolean"
+          },
+          "gate_status_text": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_GateOut": {
+        "type": "object",
+        "properties": {
+          "gate_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gateInDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "gateOutDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "licenseTruck": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rsuid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "edpStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateInRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateOutRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "driverName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "truckTypeID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "truckTypeText": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dcCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "flag": {
+            "type": "boolean"
+          },
+          "gate_status_text": {
             "type": "string",
             "nullable": true
           }

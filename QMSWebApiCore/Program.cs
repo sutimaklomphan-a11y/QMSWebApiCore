@@ -12,9 +12,15 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Configure DBOptions
+builder.Services.Configure<DBOptions>(
+    builder.Configuration.GetSection("Database"));
 
 // Register GateService
-builder.Services.AddScoped<IGateRepository, GateRepository>();
+builder.Services.AddScoped<IGateInRepository, GateRepository>();
+builder.Services.AddScoped<IGateOutRepository,GateOutRepository>();
+builder.Services.AddScoped<IPreCoolRepository, PreCoolRepository>();
+
 
 // Configure CORS
 builder.Services.AddCors(options =>
@@ -40,7 +46,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseCors("AllowAngular");
 

@@ -1,19 +1,18 @@
 ﻿using Dapper;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Npgsql;
-using QMSWebApiCore.Data;
 using QMSWebApiCore.Models;
+using System.Data;
 
 namespace QMSWebApiCore.Services
 {
-
-    public class GateRepository(IConfiguration configuration) : IGateInRepository
+    public class GateOutRepository(IConfiguration configuration) : IGateOutRepository
     {
         private readonly string _schema = ValidateSchemaName(configuration["DatabaseSchema:DBSchema"]
             ?? configuration["Database:Schema"] ?? "outbound_qms_sim");
         private readonly string _connectionString = configuration.GetConnectionString("DefaultConnection")
             ?? throw new ArgumentException("Connection string is required");
-        public async Task<List<M_GateIn>> GetAllGateInStatusAsync(M_GateIn ClsGateIn)
+        public async Task<List<M_GateOut>> GetAllGateOutStatusAsync(M_GateOut ClsGateOut)
         {
             try
             {
@@ -48,7 +47,7 @@ namespace QMSWebApiCore.Services
 
                 using (var connection = new NpgsqlConnection(_connectionString))
                 {
-                    var result = await connection.QueryAsync<M_GateIn>(sql, new { DCCode = ClsGateIn.DCCode });
+                    var result = await connection.QueryAsync<M_GateOut>(sql, new { DCCode = ClsGateOut.DCCode });
                     return result.ToList();
                 }
             }
@@ -63,12 +62,12 @@ namespace QMSWebApiCore.Services
                 throw;
             }
         }
-        public async Task<List<M_GateIn>> GetAllGateInAsync(string DCCode)
+        public async Task<List<M_GateOut>> GetAllGateOutAsync(string DCCode)
         {
             try
             {
                 var sql = $@"
-                            SELECT ROW_NUMBER() OVER (ORDER BY GATE.gate_id) AS Gate_id,
+                        SELECT ROW_NUMBER() OVER (ORDER BY GATE.gate_id) AS Gate_id,
                             GATE.gate_barcode AS Barcode,
                             GATE.gate_dc_code ,
                             GATE.gate_type_truck AS TruckTypeID,
@@ -82,23 +81,18 @@ namespace QMSWebApiCore.Services
                             GATE.gate_truck_out AS GateOutDate,
                             GATE.gate_status AS GateStatus,
                             TRUCKTYPE.truck_type_name AS TruckTypeText,
-                            TRUCKTYPE.truck_type_image AS TruckTypeImage,
-                            STATUS.rsu_status_text AS RSUStatusText,
-                            case when GATE.gate_status = 1 then 'รถเข้าคลังสินค้า'
-		                    	when GATE.gate_status = 1 and GATE.gate_rsu_id = 1 then STATUS.rsu_status_text
-		                    	when GATE.gate_status = 1 and GATE.gate_rsu_id = 2 then STATUS.rsu_status_text
-		                    	end as gate_status_text
-                        FROM {_schema}.tb_tran_gate GATE 
-                        INNER JOIN {_schema}.tb_truck_type TRUCKTYPE 
+                            TRUCKTYPE.truck_type_image AS TruckTypeImage
+                        FROM outbound_qms_sim.tb_tran_gate GATE 
+                        LEFT JOIN outbound_qms_sim.tb_truck_type TRUCKTYPE 
                             ON GATE.gate_type_truck = TRUCKTYPE.truck_type_id 
-                        INNER JOIN {_schema}.tb_rsu_status STATUS 
-                            ON GATE.gate_rsu_id = STATUS.rsu_status_id
+                        LEFT join outbound_qms_sim.tb_rsu_status STATUS 
+                            ON GATE.gate_rsu_id = STATUS.rsu_status_id 
                         WHERE GATE.gate_dc_code = @DCCode
-                        ORDER BY GATE.gate_id DESC";
+                               AND gate_status = 2";
 
                 using (var connection = new NpgsqlConnection(_connectionString))
                 {
-                    var result = await connection.QueryAsync<M_GateIn>(sql, new { DCCode = DCCode });
+                    var result = await connection.QueryAsync<M_GateOut>(sql, new { DCCode = DCCode });
                     return result.ToList();
                 }
             }
@@ -113,7 +107,7 @@ namespace QMSWebApiCore.Services
                 throw;
             }
         }
-        public async Task<List<M_GateIn>> GatGateInByBarcodeOnceAsync(string Barcode, string DCCode)
+        public async Task<List<M_GateOut>> GatGateOutByBarcodeOnceAsync(string Barcode, string DCCode)
         {
             try
             {
@@ -149,7 +143,7 @@ namespace QMSWebApiCore.Services
 
                 using (var connection = new NpgsqlConnection(_connectionString))
                 {
-                    var result = await connection.QueryAsync<M_GateIn>(sql, new { Barcode = Barcode, DCCode = DCCode });
+                    var result = await connection.QueryAsync<M_GateOut>(sql, new { Barcode = Barcode, DCCode = DCCode });
                     return result.ToList();
                 }
             }
@@ -164,6 +158,7 @@ namespace QMSWebApiCore.Services
                 throw;
             }
         }
+        //ต้องลบออกไหมM
         public async Task<M_GateIn?> GetGateInByDetailAsync(int Gate_id, string DCCode)
         {
             M_GateIn? gate = null;
@@ -244,127 +239,69 @@ namespace QMSWebApiCore.Services
 
             return gate;
         }
-        public async Task<string> CheckDuplicateBarcode(string barcode)
-        {
-            M_GateIn? gate = null;
-            using (var connection = new NpgsqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
-                var sql = $@"
-                            SELECT gate_barcode,
-                            FROM {_schema}.tb_tran_gate 
-                            WHERE GATE.gate_barcode = @gate_barcode";
-
-                using (var command = new NpgsqlCommand(sql, connection))
-                {
-                    if (string.IsNullOrEmpty(barcode))
-                    {
-                        command.Parameters.AddWithValue("@gate_barcode", barcode);
-                    }
-
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            {
-                                gate.Barcode = reader.GetString(0);
-                            };
-                        }
-                    }
-                }
-            }
-            return barcode;
-        }
-        // CREATE, UPDATE, DELETE  - Raw SQL
-        public async Task<M_GateIn> CreateGateInAsync(M_GateIn ClsGateIn)
+        public async Task<bool> StampGateOutAsync(M_GateOut ClsGateOut)
         {
             var now = DateTime.UtcNow;
             using (var connection = new NpgsqlConnection(_connectionString))
             {
                 await connection.OpenAsync();
-                var sql = $@"INSERT INTO {_schema}.tb_tran_gate (
-                                     gate_id ,
-                                     gate_driver_name ,
-                                     gate_type_truck ,
-                                     gate_license ,
-                                     gate_action_by ,
-                                     gate_status,
-                                     gate_action_date ,
-                                     gate_rsu_id ,
-                                     gate_barcode ,
-                                     gate_in_remark ,
-                                     gate_truck_in ,
-                                     gate_dc_code ,
-                                     created_by ,
-                                     created_date ,
-                                        flag 
-                    ) 
-                    VALUES (
-                                        nextval('outbound_qms_sim.tb_tran_gate_gate_id_seq'::regclass) ,
-                                        @gate_driver_name ,
-                                        @gate_type_truck ,                                        
-                                        @gate_license ,
-                                        @gate_action_by ,
-                                        @gate_status,
-                                        CAST(@gate_action_date AS DATE),
-                                        @gate_rsu_id , 
-                                        @gate_barcode ,
-                                        @gate_in_remark ,
-                                        @gate_truck_in,
-                                        @gate_dc_code ,
-                                        @created_by ,   
-                                        @created_date,
-                                        @flag)
-
-                     RETURNING       gate_id,
-                                     gate_driver_name ,
-                                     gate_type_truck ,
-                                     gate_license ,
-                                     gate_action_by ,
-                                     gate_status,
-                                     gate_action_date ,
-                                     gate_rsu_id ,
-                                     gate_barcode ,
-                                     gate_in_remark ,
-                                     gate_truck_in ,
-                                     gate_dc_code ,
-                                     created_by ,
-                                     created_date ,
-                                     flag ";
+                var sql = $@"UPDATE {_schema}.tb_tran_gate 
+                            SET gate_truck_out = @gate_truck_out,
+                                last_process = @last_process,
+                                gate_status = @gate_status,
+                                gate_out_remark = @gate_out_remark,
+                                gate_out_lps_name = @gate_out_lps_name,
+                                updated_date = @updated_date
+                            WHERE gate_status = 1
+                            AND gate_barcode = @gate_barcode";
 
                 using (var command = new NpgsqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@gate_driver_name", (object?)ClsGateIn.DriverName ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_type_truck", ClsGateIn.TruckTypeID);
-                    command.Parameters.AddWithValue("@gate_barcode", (object?)ClsGateIn.Barcode ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_license", (object?)ClsGateIn.LicenseTruck ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_action_by", (object?)ClsGateIn.ActionBy ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_status", 1);
-                    command.Parameters.AddWithValue("@gate_action_date", now.ToString("yyyy-MM-dd"));
-                    command.Parameters.AddWithValue("@gate_rsu_id", (object?)ClsGateIn.RSUStatusID ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_in_remark", (object?)ClsGateIn.GateInRemark ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_truck_in", now);
-                    command.Parameters.AddWithValue("@gate_dc_code", (object?)ClsGateIn.DCCode ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@created_by", (object?)ClsGateIn.CreatedBy ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@created_date", now);
-                    command.Parameters.AddWithValue("@flag", 1);
+                    command.Parameters.AddWithValue("@gate_barcode", (object?)ClsGateOut.Barcode ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@gate_truck_out", (object?)ClsGateOut.DriverName ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@last_process", "Gate Out");
+                    command.Parameters.AddWithValue("@gate_status", "2");
+                    command.Parameters.AddWithValue("@gate_out_remark", (object?)ClsGateOut.GateInRemark ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@gate_out_lps_name", (object?)ClsGateOut.UpdatedBy ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@updated_date", now);
 
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            return new M_GateIn
-                            {
-                                GateID = reader.GetInt32(0),
-                            };
-                        }
-                    }
+                    var rowsAffected = await command.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
                 }
             }
-
-            throw new Exception("Failed to create gate record");
         }
-        public async Task<bool> UpdateGateInAsync(M_GateIn ClsGateIn)
+        public async Task<bool> StampGateOutDirectAsync(M_GateOut ClsGateOut)
+        {
+            var now = DateTime.UtcNow;
+            using (var connection = new NpgsqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                var sql = $@"UPDATE {_schema}.tb_tran_gate 
+                            SET gate_truck_out = @gate_truck_out,
+                                last_process = @last_process,
+                                gate_status = @gate_status,
+                                gate_out_remark = @gate_out_remark,
+                                gate_out_lps_name = @gate_out_lps_name,
+                                updated_date = @updated_date
+                            WHERE gate_status = 1
+                            AND gate_barcode = @gate_barcode";
+
+                using (var command = new NpgsqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@gate_barcode", (object?)ClsGateOut.Barcode ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@gate_truck_out", (object?)ClsGateOut.DriverName ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@last_process", "Gate Out");
+                    command.Parameters.AddWithValue("@gate_status", "2");
+                    command.Parameters.AddWithValue("@gate_out_remark", (object?)ClsGateOut.GateInRemark ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@gate_out_lps_name", (object?)ClsGateOut.UpdatedBy ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@updated_date", now);
+
+                    var rowsAffected = await command.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+        public async Task<bool> UpdateGateOutAsync(M_GateOut ClsGateOut)
         {
             var now = DateTime.UtcNow;
             using (var connection = new NpgsqlConnection(_connectionString))
@@ -382,21 +319,22 @@ namespace QMSWebApiCore.Services
 
                 using (var command = new NpgsqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@gate_barcode", (object?)ClsGateIn.Barcode ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_driver_name", (object?)ClsGateIn.DriverName ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_type_truck", ClsGateIn.TruckTypeID);
-                    command.Parameters.AddWithValue("@gate_license", (object?)ClsGateIn.LicenseTruck ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_rsu_id", (object?)ClsGateIn.RSUStatusID ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@gate_in_remark", (object?)ClsGateIn.GateInRemark ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@updated_by", (object?)ClsGateIn.UpdatedBy ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@gate_barcode", (object?)ClsGateOut.Barcode ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@gate_driver_name", (object?)ClsGateOut.DriverName ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@gate_type_truck", ClsGateOut.TruckTypeID);
+                    command.Parameters.AddWithValue("@gate_license", (object?)ClsGateOut.LicenseTruck ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@gate_rsu_id", (object?)ClsGateOut.RSUStatusID ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@gate_in_remark", (object?)ClsGateOut.GateInRemark ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@updated_by", (object?)ClsGateOut.UpdatedBy ?? DBNull.Value);
                     command.Parameters.AddWithValue("@updated_date", now);
 
                     var rowsAffected = await command.ExecuteNonQueryAsync();
                     return rowsAffected > 0;
+
                 }
             }
         }
-        public async Task<bool> DeleteGateInAsync(M_GateIn ClsGateIn)
+        public async Task<bool> DeleteGateOutAsync(M_GateOut ClsGateOut)
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
@@ -405,96 +343,10 @@ namespace QMSWebApiCore.Services
 
                 using (var command = new NpgsqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@gate_barcode", ClsGateIn.Barcode ?? DBNull.Value.ToString());
+                    command.Parameters.AddWithValue("@gate_barcode", ClsGateOut.Barcode ?? DBNull.Value.ToString());
 
                     var rowsAffected = await command.ExecuteNonQueryAsync();
                     return rowsAffected > 0;
-                }
-            }
-        }
-        public async Task<M_GateIn> SearchEDPInByBarcode(string DCcode, string barcdoe, string ActionDate)
-        {
-            M_GateIn? gate = null;
-            using (var connection = new NpgsqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
-                var sql = $@"SELECT GATE.gate_id,
-		                            GATE.gate_barcode,
-	  	                            GATE.gate_license,
-	  	                            GATE.gate_action_by,
-	  	                            GATE.gate_driver_name,
-	  	                            GATE.gate_rsu_id,
-	  	                            GATE.gate_in_remark,
-	  	                            GATE.gate_out_remark,	  	
-	  	                            GATE.gate_truck_in,
-	  	                            GATE.gate_truck_out,
-	  	                            GATE.gate_status,
-	  	                            EDP.edp_status,
-	  	                            TRUCKTYPE.truck_type_id,
-		                            TRUCKTYPE.truck_type_name,
-		                            TRUCKTYPE.truck_type_style,
-		                            TRUCKTYPE.truck_type_image,
-		                            case when RSU_STATUS.rsu_status_text
-
-                            FROM {_schema}.tb_tran_gate GATE 
-                            INNER JOIN outbound_qms_sim.tb_truck_type TRUCKTYPE 
-		                            on GATE.gate_type_truck  = TRUCKTYPE.truck_type_id 
-                            INNER JOIN {_schema}.tb_tran_edp EDP
-		                            on GATE.gate_barcode = EDP.edp_barcode
-                            LEFT JOIN {_schema}.tb_tran_rsu RSU
-		                            on GATE.gate_rsu_id  = RSU.rsu_id 
-                            INNER JOIN {_schema}.tb_rsu_status RSU_STATUS 
-		                            on GATE.gate_rsu_id = RSU_STATUS.rsu_status_id 
-
-                            where  1=1  ";
-
-                using (var command = new NpgsqlCommand(sql, connection))
-                {
-                    if (!string.IsNullOrWhiteSpace(DCcode))
-                    {
-                        command.CommandText += " AND GATE.gate_dc_code = @DCCode";
-                        command.Parameters.AddWithValue("@DCCode", DCcode);
-                    }
-
-                    if (!string.IsNullOrWhiteSpace(barcdoe))
-                    {
-                        command.CommandText += " AND GATE.gate_barcode = @barcdoe";
-                        command.Parameters.AddWithValue("@barcdoe", barcdoe);
-                    }
-
-                    if (!string.IsNullOrWhiteSpace(ActionDate))
-                    {
-                        command.CommandText += " AND CAST(GATE.gate_action_date AS DATE) = @ActionDate";
-                        command.Parameters.AddWithValue("@ActionDate", ActionDate.ToString());
-                    }
-
-                    using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            gate = new M_GateIn
-                            {
-                                GateID = reader.GetInt32(0),
-                                Barcode = reader.GetString(1),
-                                LicenseTruck = reader.GetString(2),
-                                ActionBy = reader.GetString(3),
-                                DriverName = reader.GetString(4),
-                                RSUID = reader.GetInt32(5),
-                                GateInRemark = reader.IsDBNull(6) ? null : reader.GetString(6),
-                                GateOutRemark = reader.IsDBNull(7) ? null : reader.GetString(7),
-                                GateInDate = reader.IsDBNull(8) ? null : reader.GetDateTime(8),
-                                GateOutDate = reader.IsDBNull(9) ? null : reader.GetDateTime(9),
-                                GateStatus = reader.GetInt32(10),
-                                EDPStatusID = reader.GetString(11),
-                                TruckTypeID = reader.GetInt32(12),
-                                TruckTypeName = reader.GetString(13),
-                                TruckTypeStyle = reader.GetString(14),
-                                TruckTypeImage = reader.GetString(15),
-                                RSUStatusText = reader.GetString(16)
-                            };
-                        }
-                    }
-                    return gate;
                 }
             }
         }

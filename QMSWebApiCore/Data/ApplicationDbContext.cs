@@ -9,7 +9,8 @@ namespace QMSWebApiCore.Data
             : base(options)
         {
         }
-        public DbSet<GateIn> Gates { get; set; }
+        public DbSet<M_GateIn> Gates { get; set; }
+        public DbSet<M_GateOut> GateOuts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

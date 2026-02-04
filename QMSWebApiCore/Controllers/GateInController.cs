@@ -1,99 +1,209 @@
-﻿// Controllers/GateInController.cs
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Npgsql;
 using QMSWebApiCore.Models;
-using QMSWebApiCore.Services;  // ← เปลี่ยนเป็น Services
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+using QMSWebApiCore.Services;
+using System.Data;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace QMSWebApiCore.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class GateInController : ControllerBase
     {
-        private readonly IGateRepository _gateService;  
-        public GateInController(IGateRepository gateService)
+        private readonly IGateInRepository _gateService;
+        public GateInController(IGateInRepository gateService)
         {
             _gateService = gateService;
         }
 
-        // GET: api/gatein
-        [HttpGet]
-        public async Task<IActionResult> GetAllGates()
+        [HttpGet("SearchGateIn/{DCCode}")]
+        public async Task<IActionResult> GetAllGates(string DCCode)
         {
-            var gates = await _gateService.GetAllGateInAsync();
+            try
+            {
+                if (string.IsNullOrEmpty(DCCode))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "DCCode is required"
+                    });
+                }
+                var gates = await _gateService.GetAllGateInAsync(DCCode);
+                return Ok(new
+                {
+                    success = true,
+                    data = gates,
+                    count = gates.Count
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    error = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("SearchGateInByBarcode/{Barcode}/{DCCode}")]
+        public async Task<IActionResult> GetGateInByBarcode(string Barcode, string DCCode)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(DCCode))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "DCCode is required"
+                    });
+                }
+                var gates = await _gateService.GatGateInByBarcodeOnceAsync(Barcode, DCCode);
+                return Ok(new
+                {
+                    success = true,
+                    data = gates,
+                    count = gates.Count
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    error = ex.Message
+                });
+            }
+        }
+
+        [HttpPost("StampGateIn")]
+        public async Task<IActionResult> GateIn([FromBody] M_GateIn ClsGateIn)
+        {
+            // เช็ค Duplicate
+            string duplicateBarcode = await _gateService.CheckDuplicateBarcode(ClsGateIn.Barcode);
+
+            if (!string.IsNullOrEmpty(duplicateBarcode))
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = $"Barcode {duplicateBarcode} ถูกใช้งานแล้ว!",
+                    isDuplicate = true
+                });
+            }
+            else ClsGateIn.Barcode = ClsGateIn.Barcode.Trim();
+
+            var gate = await _gateService.CreateGateInAsync(ClsGateIn);
+            if (gate == null)
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    error = "บันทึกรถเข้าคลังสินค้า Gate In ไม่สำเร็จ"
+                });
+            }
             return Ok(new
             {
                 success = true,
-                data = gates,
-                count = gates.Count()
+                message = "บันทึกรถเข้าคลังสินค้า Gate In สำเร็จ"
             });
         }
 
-        // GET: api/gatein/Barcode
-        [HttpGet("{Barcode}")]
-        public async Task<IActionResult> GetGateInByBarcode(string Barcode)
+        [HttpPut("UpdateGateIn")]
+        public async Task<IActionResult> UpdateGateIn([FromBody] M_GateIn ClsGateIn)
         {
-            var gate = await _gateService.GetGateInByBarcodeAsync(Barcode);
-
-            if (gate == null)
-                return NotFound(new { success = false, error = "Gate not found" });
-
-            return Ok(new { success = true, data = gate });
-        }
-
-        // GET: api/gatein/detail
-        [HttpGet("{id}/{DCCode}")]
-        public async Task<IActionResult> GetGateInByDetail(int Gate_id, string DCCode)
-        {
-            var gate = await _gateService.GetGateInByDetailAsync(Gate_id, DCCode);
-
-            if (gate == null)
-                return NotFound(new { success = false, error = "Gate not found" });
-
-            return Ok(new { success = true, data = gate });
-        }
-
-        // POST: Create GATE IN
-        [HttpPost("StampGateIn")]
-        public async Task<IActionResult> GateIn([FromBody] GateIn GT)
-        {
-            R_result result = new R_result();
-
-            // Validate required fields
-            if (string.IsNullOrWhiteSpace(GT.DriverName))
-                return BadRequest("Driver Name is required");
-
-            // Optional fields - set to null if empty
-            if (string.IsNullOrWhiteSpace(GT.Barcode))
-                GT.Barcode = null;
-            else
-                GT.Barcode = GT.Barcode.Trim();
-
-            if (string.IsNullOrWhiteSpace(GT.GateInRemark))
-                GT.GateInRemark = null;
-            else
-                GT.GateInRemark = GT.GateInRemark.Trim();
-
-            //Check Duplicate
-            if (GT.Barcode == "")
+            try
             {
-                result.Result = false;
-                result.ErrorMessage = "Barcode นี้ถูกใช้แล้ว !!!";
+                // Validate ModelState
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "ข้อมูลไม่ถูกต้อง",
+                        errors = ModelState.Values
+                            .SelectMany(v => v.Errors)
+                            .Select(e => e.ErrorMessage)
+                            .ToList()
+                    });
+                }
+
+                // Validate Barcode specifically
+                if (string.IsNullOrEmpty(ClsGateIn?.Barcode))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "กรุณาระบุ Barcode"
+                    });
+                }
+
+                var updated = await _gateService.UpdateGateInAsync(ClsGateIn);
+
+                if (!updated)
+                {
+                    return NotFound(new
+                    {
+                        success = false,
+                        message = "ไม่พบข้อมูล Gate In ที่ต้องการแก้ไข หรือไม่มีการเปลี่ยนแปลงข้อมูล"
+                    });
+                }
+
+                return Ok(new
+                {
+                    success = true,
+                    message = "แก้ไขรถเข้าคลังสินค้า Gate In สำเร็จ",
+                    data = new
+                    {
+                        barcode = ClsGateIn.Barcode,
+                        updatedDate = DateTime.UtcNow
+                    }
+                });
             }
-
-            // Save to database
-            var gate = await _gateService.CreateGateInAsync(GT);
-
-            return Ok(new { success = true, data = gate });
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "ข้อมูลไม่ครบถ้วน",
+                    error = ex.Message
+                });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = ex.Message
+                });
+            }
+            catch (NpgsqlException ex)
+            {
+                // Database error
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "เกิดข้อผิดพลาดในการเชื่อมต่อฐานข้อมูล",
+                    error = ex.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                // General error
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "เกิดข้อผิดพลาดในการแก้ไขข้อมูล",
+                    error = ex.Message
+                });
+            }
         }
 
-   
-        //----> update GATE IN
-        [HttpPost("barcode/{barcode}")]
-        public async Task<IActionResult> UpdateGateIn(string barcode, [FromBody] GateIn ClsGateIn)
+        [HttpPost("DeleteGateIn")]
+        public async Task<IActionResult> DeleteGateIn([FromBody] M_GateIn ClsGateIn)
         {
             try
             {
@@ -108,21 +218,21 @@ namespace QMSWebApiCore.Controllers
                     });
                 }
 
-                var updated = await _gateService.UpdateGateInAsync(barcode, ClsGateIn);
+                var deleted = await _gateService.DeleteGateInAsync(ClsGateIn);
 
-                if (!updated)
+                if (!deleted)
                 {
                     return NotFound(new
                     {
                         success = false,
-                        error = "Gate not found or no changes made"
+                        error = "ลบข้อมูลรถเข้าคลังสินค้า Gate In ไม่สำเร็จ"
                     });
                 }
 
                 return Ok(new
                 {
                     success = true,
-                    message = "Gate updated successfully"
+                    message = "ลบข้อมูลรถเข้าคลังสินค้า Gate In สำเร็จ"
                 });
             }
             catch (Exception ex)
@@ -134,35 +244,5 @@ namespace QMSWebApiCore.Controllers
                 });
             }
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> GateIn([FromBody] GateCreateDto gateDto)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState);
-
-        //    var gate = new GateIn
-        //    {
-        //        ContainerNumber = gateDto.ContainerNumber,
-        //        TruckNumber = gateDto.TruckNumber,
-        //        DriverName = gateDto.DriverName,
-        //        SealNumber = gateDto.SealNumber,
-        //        Remarks = gateDto.Remarks,
-        //        Status = "IN",
-        //        GateInTime = DateTime.UtcNow,
-        //        CreatedAt = DateTime.UtcNow,
-        //        UpdatedAt = DateTime.UtcNow
-        //    };
-
-        //    var created = await _repository.CreateAsync(gate);
-
-        //    return CreatedAtAction(nameof(GetGateById), new { id = created.Id }, new
-        //    {
-        //        success = true,
-        //        message = "Gate In recorded successfully",
-        //        data = created
-        //    });
-        //}
     }
-    
 }
