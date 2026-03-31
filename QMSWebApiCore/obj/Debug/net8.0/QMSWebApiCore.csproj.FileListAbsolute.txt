@@ -6,6 +6,7 @@ D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\bin\Debug\net8.0\QMSWebApiCor
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\bin\Debug\net8.0\QMSWebApiCore.runtimeconfig.json
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\bin\Debug\net8.0\QMSWebApiCore.dll
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\bin\Debug\net8.0\QMSWebApiCore.pdb
+D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\bin\Debug\net8.0\Dapper.dll
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\bin\Debug\net8.0\Humanizer.dll
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
@@ -96,6 +97,7 @@ D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\QMSWebApiCor
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\QMSWebApiCore.csproj.CoreCompileInputs.cache
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\QMSWebApiCore.MvcApplicationPartsAssemblyInfo.cs
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\QMSWebApiCore.MvcApplicationPartsAssemblyInfo.cache
+D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\QMSWebApiCore.sourcelink.json
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\rjimswa.dswa.cache.json
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
@@ -104,10 +106,10 @@ D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\staticwebass
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\staticwebassets.development.json
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\QMSWebAp.826F3F8D.Up2Date
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\QMSWebApiCore.dll
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\refint\QMSWebApiCore.dll
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\QMSWebApiCore.pdb
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\QMSWebApiCore.genruntimeconfig.cache
 D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\ref\QMSWebApiCore.dll
+D:\2454957\API Project\QMSWebApiCore\QMSWebApiCore\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

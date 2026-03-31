@@ -1,8 +1,277 @@
 [
   {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "GetAllCountPlanPost",
+    "RelativePath": "api/v1/Dashboard/getAllCountPlan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "PostChartEDP",
+    "RelativePath": "api/v1/Dashboard/GetChartEDP",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "PostChartFinishLoad",
+    "RelativePath": "api/v1/Dashboard/GetChartFinishLoad",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "GetChartFinishLoad",
+    "RelativePath": "api/v1/Dashboard/GetChartFinishLoad_Old/{ActionDate}/{BigCType}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ActionDate",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "BigCType",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "PostChartPreCool",
+    "RelativePath": "api/v1/Dashboard/GetChartPreCool",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "PostChartStartLoad",
+    "RelativePath": "api/v1/Dashboard/GetChartStartLoad",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "PostChartTruckOnDock",
+    "RelativePath": "api/v1/Dashboard/GetChartTruckOnDock",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "GetDashboard",
+    "RelativePath": "api/v1/Dashboard/GetDashboard/{ActionDate}/{BigCType}/{GroupNo}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ActionDate",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "BigCType",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "GroupNo",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "GetPlanListRemainFinish",
+    "RelativePath": "api/v1/Dashboard/GetPlanListRemainFinish",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "GetTimeLine",
+    "RelativePath": "api/v1/Dashboard/GetTimeLine/{ActionDate}/{status}/{BigCType}/{PlanGroupNo}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ActionDate",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "BigCType",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "PlanGroupNo",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "PostStackBarFinish",
+    "RelativePath": "api/v1/Dashboard/PostStackBarFinish",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "PostStackBarFinishLoadTime",
+    "RelativePath": "api/v1/Dashboard/PostStackBarFinishLoadTime",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.DashboardController",
+    "Method": "PostStackBarRemain",
+    "RelativePath": "api/v1/Dashboard/PostStackBarRemain",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "OutboundQMSModel.M_Dashboard",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.EDPInController",
+    "Method": "GetPlanListEDP",
+    "RelativePath": "api/v1/EDP/GetPlanListEDP",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_EDP",
+        "Type": "QMSWebApiCore.Models.M_EDP",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QMSWebApiCore.Controllers.EDPInController",
     "Method": "SearchEDPInByBarcode",
-    "RelativePath": "api/EDPIn/SearchEDPInByBarcode/{DCcode}/{Barcode}/{ActionDate}",
+    "RelativePath": "api/v1/EDP/SearchEDPInByBarcode/{DCcode}/{Barcode}/{ActionDate}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -26,6 +295,59 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "QMSWebApiCore.Controllers.EDPInController",
+    "Method": "StampEDPIn",
+    "RelativePath": "api/v1/EDP/StampEDPIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_EDP",
+        "Type": "QMSWebApiCore.Models.M_EDP",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.EDPInController",
+    "Method": "StampEDPOut",
+    "RelativePath": "api/v1/EDP/StampEDPOut",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_EDP",
+        "Type": "QMSWebApiCore.Models.M_EDP",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "CheckDuplicateGateInBarcode",
+    "RelativePath": "api/v1/GateIn/CheckDuplicateBarcode/{Barcode}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Barcode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QMSWebApiCore.Controllers.GateInController",
     "Method": "DeleteGateIn",
     "RelativePath": "api/v1/GateIn/DeleteGateIn",
@@ -34,7 +356,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ClsGateIn",
+        "Name": "CLS_GATEIN",
         "Type": "QMSWebApiCore.Models.M_GateIn",
         "IsRequired": true
       }
@@ -43,8 +365,29 @@
   },
   {
     "ContainingType": "QMSWebApiCore.Controllers.GateInController",
+    "Method": "GetBarcodeDetail",
+    "RelativePath": "api/v1/GateIn/GetBarcodeDetail/{Barcode}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Barcode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateInController",
     "Method": "GetAllGates",
-    "RelativePath": "api/v1/GateIn/SearchGateIn/{DCCode}",
+    "RelativePath": "api/v1/GateIn/SearchGateIn/{DCCode}/{TruckTypeID}/{StatusGateIn}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -53,6 +396,26 @@
         "Name": "DCCode",
         "Type": "System.String",
         "IsRequired": true
+      },
+      {
+        "Name": "TruckTypeID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "StatusGateIn",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -80,14 +443,14 @@
   },
   {
     "ContainingType": "QMSWebApiCore.Controllers.GateInController",
-    "Method": "GateIn",
+    "Method": "StampGateIn",
     "RelativePath": "api/v1/GateIn/StampGateIn",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ClsGateIn",
+        "Name": "CLS_GATEIN",
         "Type": "QMSWebApiCore.Models.M_GateIn",
         "IsRequired": true
       }
@@ -103,7 +466,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ClsGateIn",
+        "Name": "CLS_GATEIN",
         "Type": "QMSWebApiCore.Models.M_GateIn",
         "IsRequired": true
       }
@@ -119,7 +482,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ClsGateOut",
+        "Name": "CLS_GATEOUT",
         "Type": "QMSWebApiCore.Models.M_GateOut",
         "IsRequired": true
       }
@@ -128,14 +491,71 @@
   },
   {
     "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
+    "Method": "getGateOutDetail",
+    "RelativePath": "api/v1/GateOut/getGateOutBarcodeDetail/{Barcode}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Barcode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
+    "Method": "getGateOutBarcodeDirectDetail",
+    "RelativePath": "api/v1/GateOut/getGateOutBarcodeDirectDetail/{Barcode}/{DCCode}/{ActionDate}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Barcode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "ActionDate",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
     "Method": "GetAllGateOut",
-    "RelativePath": "api/v1/GateOut/SearchGateOut/{DCCode}",
+    "RelativePath": "api/v1/GateOut/SearchGateOut/{DCCode}/{TruckTypeID}/{StatusGateOut}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "TruckTypeID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "StatusGateOut",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -165,6 +585,32 @@
   },
   {
     "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
+    "Method": "GetGateOutDirect",
+    "RelativePath": "api/v1/GateOut/SearchGateOutDirect/{DCCode}/{TruckTypeID}/{StatusGateOut}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "TruckTypeID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "StatusGateOut",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.GateOutController",
     "Method": "StampGateOut",
     "RelativePath": "api/v1/GateOut/StampGateOut",
     "HttpMethod": "POST",
@@ -172,7 +618,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ClsGateOut",
+        "Name": "CLS_GATEOUT",
         "Type": "QMSWebApiCore.Models.M_GateOut",
         "IsRequired": true
       }
@@ -188,7 +634,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ClsGateOut",
+        "Name": "CLS_GATEOUT",
         "Type": "QMSWebApiCore.Models.M_GateOut",
         "IsRequired": true
       }
@@ -196,71 +642,726 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "QMSWebApiCore.Controllers.LoadOnDockController",
-    "Method": "Get",
-    "RelativePath": "LoadOnDock",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[QMSWebApiCore.Models.WeatherForecast, QMSWebApiCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "LoadOnDock"
-  },
-  {
-    "ContainingType": "QMSWebApiCore.Controllers.LoadOnDockController",
-    "Method": "StampGateIn",
-    "RelativePath": "LoadOnDock/StampGateIn",
+    "ContainingType": "QMSWebApiCore.Controllers.LoadOnTruckController",
+    "Method": "GetPlanListFinishLoad",
+    "RelativePath": "api/v1/LoadOnTruck/GetPlanListFinishLoad",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "GateIn",
-        "Type": "QMSWebApiCore.Models.M_Gate",
+        "Name": "CLS_LOADONTRUCK",
+        "Type": "QMSWebApiCore.Models.M_LoadOnTruck",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Net.Http.HttpResponseMessage",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
-    "ContainingType": "QMSWebApiCore.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
+    "ContainingType": "QMSWebApiCore.Controllers.LoadOnTruckController",
+    "Method": "GetPlanListFinishPreLoad",
+    "RelativePath": "api/v1/LoadOnTruck/GetPlanListFinishPreLoad",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_LOADONTRUCK",
+        "Type": "QMSWebApiCore.Models.M_LoadOnTruck",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.LoadOnTruckController",
+    "Method": "GetPlanListLoadInTruck",
+    "RelativePath": "api/v1/LoadOnTruck/GetPlanListLoadInTruck",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_LOADONTRUCK",
+        "Type": "QMSWebApiCore.Models.M_LoadOnTruck",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.LoginController",
+    "Method": "GetLogin",
+    "RelativePath": "api/v1/Login/GetLogin/{AccountName}/{DCCode}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[QMSWebApiCore.Models.WeatherForecast, QMSWebApiCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "AccountUserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "AccountName",
+        "Type": "",
+        "IsRequired": true
       }
     ],
-    "EndpointName": "GetWeatherForecast"
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.LoginController",
+    "Method": "GetLogin",
+    "RelativePath": "api/v1/Login/getPreCoolPass",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Result",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ErrorMessage",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AccountCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AccountUsername",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AccountPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AccountName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AccountDCCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.PreCoolController",
+    "Method": "CancelPreCoolPass",
+    "RelativePath": "api/v1/PreCool/CancelPreCoolPass",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_PRECOOL",
+        "Type": "QMSWebApiCore.Models.M_Precool",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.PreCoolController",
+    "Method": "DeletePreCool",
+    "RelativePath": "api/v1/PreCool/DeletePreCool",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_PRECOOL",
+        "Type": "QMSWebApiCore.Models.M_Precool",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.PreCoolController",
+    "Method": "GetPlanListPreCool",
+    "RelativePath": "api/v1/PreCool/GetPlanListPreCool",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_PRECOOL",
+        "Type": "QMSWebApiCore.Models.M_Precool",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.PreCoolController",
+    "Method": "GetPreCoolFail",
+    "RelativePath": "api/v1/PreCool/GetPreCoolFail/{PlanNo}/{DCCode}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_PRECOOL",
+        "Type": "QMSWebApiCore.Models.M_Precool",
+        "IsRequired": true
+      },
+      {
+        "Name": "PlanNo",
+        "Type": "",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.PreLoadController",
+    "Method": "GetPlanListPreLoad",
+    "RelativePath": "api/v1/PreLoad/GetPlanListPreLoad",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_PRELOAD",
+        "Type": "QMSWebApiCore.Models.M_PreLoad",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportEDP",
+    "RelativePath": "api/v1/Report/getReportEDP/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "GetReportGateIn",
+    "RelativePath": "api/v1/Report/GetReportGateIn/{DCCode}/{StatusGateIn}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "StatusGateIn",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportGateOut",
+    "RelativePath": "api/v1/Report/getReportGateOut/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportLoad",
+    "RelativePath": "api/v1/Report/getReportLoad/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportPreCool",
+    "RelativePath": "api/v1/Report/getReportPreCool/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportPreCoolShowStore",
+    "RelativePath": "api/v1/Report/getReportPreCoolShowStore/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportPreLoad",
+    "RelativePath": "api/v1/Report/getReportPreLoad/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportRSUIn",
+    "RelativePath": "api/v1/Report/getReportRSUIn/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportRSUOut",
+    "RelativePath": "api/v1/Report/getReportRSUOut/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportSummary",
+    "RelativePath": "api/v1/Report/getReportSummary/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.ReportController",
+    "Method": "getReportTruckOnDock",
+    "RelativePath": "api/v1/Report/getReportTruckOnDock/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.RSUInController",
+    "Method": "DeleteRSUIn",
+    "RelativePath": "api/v1/RSUIn/DeleteRSUIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_RSU",
+        "Type": "QMSWebApiCore.Models.M_RSUInOut",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.RSUInController",
+    "Method": "SearchRSU",
+    "RelativePath": "api/v1/RSUIn/SearchRSUIn/{TruckTypeID}/{StatusRSU}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TruckTypeID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "StatusRSU",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.RSUInController",
+    "Method": "SearchRSUInByBarcode",
+    "RelativePath": "api/v1/RSUIn/SearchRSUInByBarcode/{Barcode}/{DCCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Barcode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DCCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.RSUInController",
+    "Method": "StampRSUIn",
+    "RelativePath": "api/v1/RSUIn/StampRSUIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_RSU",
+        "Type": "QMSWebApiCore.Models.M_RSUInOut",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.RSUInController",
+    "Method": "StampRSUInOut",
+    "RelativePath": "api/v1/RSUIn/StampRSUInOut",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_RSU",
+        "Type": "QMSWebApiCore.Models.M_RSUInOut",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.RSUInController",
+    "Method": "StampRSUOut",
+    "RelativePath": "api/v1/RSUIn/StampRSUOut",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_RSU",
+        "Type": "QMSWebApiCore.Models.M_RSUInOut",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.TMSPlanController",
+    "Method": "CancelTMSPlan",
+    "RelativePath": "api/v1/TMSPlan/CancelTMSPlan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "plans",
+        "Type": "QMSWebApiCore.Models.M_TMSPlan",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.TMSPlanController",
+    "Method": "GetTMSPlanListOnDate",
+    "RelativePath": "api/v1/TMSPlan/getTMSPlanListOnDate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "plans",
+        "Type": "QMSWebApiCore.Models.M_TMSPlan",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.TMSPlanController",
+    "Method": "SaveTMSPlan",
+    "RelativePath": "api/v1/TMSPlan/SaveTMSPlan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "plans",
+        "Type": "System.Collections.Generic.List\u00601[[QMSWebApiCore.Models.M_TMSPlan, QMSWebApiCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.TruckOnDockController",
+    "Method": "DeleteGateIn",
+    "RelativePath": "api/v1/TruckOnDock/DeleteGateIn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_TRUCKONDOCK",
+        "Type": "QMSWebApiCore.Models.M_TruckOnDock",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.TruckOnDockController",
+    "Method": "GetPlanListTruckOnDock",
+    "RelativePath": "api/v1/TruckOnDock/GetPlanListTruckOnDock",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_TRUCKONDOCK",
+        "Type": "QMSWebApiCore.Models.M_TruckOnDock",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QMSWebApiCore.Controllers.TruckOnDockController",
+    "Method": "StampTruckOnDock",
+    "RelativePath": "api/v1/TruckOnDock/StampTruckOnDock",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CLS_TRUCKONDOCK",
+        "Type": "QMSWebApiCore.Models.M_TruckOnDock",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

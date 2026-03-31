@@ -3,7 +3,7 @@ using Npgsql;
 using QMSWebApiCore.Models;
 using QMSWebApiCore.Services;
 using System.Data;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using static QMSWebApiCore.Services.IGateInRepository;
 
 namespace QMSWebApiCore.Controllers
 {
@@ -17,8 +17,8 @@ namespace QMSWebApiCore.Controllers
             _gateService = gateService;
         }
 
-        [HttpGet("SearchGateIn/{DCCode}")]
-        public async Task<IActionResult> GetAllGates(string DCCode)
+        [HttpGet("SearchGateIn/{DCCode}/{TruckTypeID}/{StatusGateIn}")]
+        public async Task<IActionResult> GetAllGates(string DCCode, string TruckTypeID, string StatusGateIn, [FromQuery] string? startDate = null, [FromQuery] string? endDate = null)
         {
             try
             {
@@ -27,10 +27,11 @@ namespace QMSWebApiCore.Controllers
                     return BadRequest(new
                     {
                         success = false,
-                        error = "DCCode is required"
+                        error = "ไม่พบ DCCode สำหรับดูรายการ Gate In ทั้งหมด"
                     });
                 }
-                var gates = await _gateService.GetAllGateInAsync(DCCode);
+
+                var gates = await _gateService.GetAllGateInAsync(DCCode,TruckTypeID,StatusGateIn, startDate, endDate);
                 return Ok(new
                 {
                     success = true,
@@ -51,6 +52,15 @@ namespace QMSWebApiCore.Controllers
         [HttpGet("SearchGateInByBarcode/{Barcode}/{DCCode}")]
         public async Task<IActionResult> GetGateInByBarcode(string Barcode, string DCCode)
         {
+            if (string.IsNullOrEmpty(DCCode))
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    error = "ไม่พบ DCCode สำหรับ Gate In"
+                });
+            }
+
             try
             {
                 if (string.IsNullOrEmpty(DCCode))
@@ -79,24 +89,68 @@ namespace QMSWebApiCore.Controllers
             }
         }
 
-        [HttpPost("StampGateIn")]
-        public async Task<IActionResult> GateIn([FromBody] M_GateIn ClsGateIn)
+        [HttpGet("GetBarcodeDetail/{Barcode}/{DCCode}")]  //ตัวใช้อยู่ใน EDP ใช้check barcode
+        public async Task<IActionResult> GetBarcodeDetail(string Barcode, string DCCode)
         {
-            // เช็ค Duplicate
-            string duplicateBarcode = await _gateService.CheckDuplicateBarcode(ClsGateIn.Barcode);
-
-            if (!string.IsNullOrEmpty(duplicateBarcode))
+            if (string.IsNullOrEmpty(DCCode))
             {
                 return BadRequest(new
                 {
                     success = false,
-                    message = $"Barcode {duplicateBarcode} ถูกใช้งานแล้ว!",
-                    isDuplicate = true
+                    error = "ไม่พบ DCCode Gate In สำหรับดูรายละเอียด Barcode"
                 });
             }
-            else ClsGateIn.Barcode = ClsGateIn.Barcode.Trim();
 
-            var gate = await _gateService.CreateGateInAsync(ClsGateIn);
+            try
+            {
+                if (string.IsNullOrEmpty(DCCode))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "DCCode is required"
+                    });
+                }
+                var gates = await _gateService.checkStatusBarcodeDetail(Barcode, DCCode);
+                return Ok(new
+                {
+                    success = true,
+                    data = gates,
+                    count = gates.Count
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    error = ex.Message
+                });
+            }
+        }
+
+        [HttpPost("StampGateIn")]
+        public async Task<IActionResult> StampGateIn([FromBody] M_GateIn CLS_GATEIN)
+        {
+            if (string.IsNullOrEmpty(CLS_GATEIN.DCCode))
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    error = "ไม่พบ DCCode สำหรับ Stamp Gate In"
+                });
+            }
+
+            // Validation
+            if (string.IsNullOrWhiteSpace(CLS_GATEIN.Barcode))
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Barcode is required"
+                });
+            }
+            var gate = await _gateService.StampGateIn(CLS_GATEIN);
             if (gate == null)
             {
                 return NotFound(new
@@ -113,11 +167,19 @@ namespace QMSWebApiCore.Controllers
         }
 
         [HttpPut("UpdateGateIn")]
-        public async Task<IActionResult> UpdateGateIn([FromBody] M_GateIn ClsGateIn)
+        public async Task<IActionResult> UpdateGateIn([FromBody] M_GateIn CLS_GATEIN)
         {
+            if (string.IsNullOrEmpty(CLS_GATEIN.DCCode))
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    error = "ไม่พบ DCCode สำหรับ Update Gate In"
+                });
+            }
+
             try
             {
-                // Validate ModelState
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(new
@@ -130,9 +192,7 @@ namespace QMSWebApiCore.Controllers
                             .ToList()
                     });
                 }
-
-                // Validate Barcode specifically
-                if (string.IsNullOrEmpty(ClsGateIn?.Barcode))
+                if (string.IsNullOrEmpty(CLS_GATEIN?.Barcode))
                 {
                     return BadRequest(new
                     {
@@ -141,8 +201,7 @@ namespace QMSWebApiCore.Controllers
                     });
                 }
 
-                var updated = await _gateService.UpdateGateInAsync(ClsGateIn);
-
+                var updated = await _gateService.UpdateGateInAsync(CLS_GATEIN);
                 if (!updated)
                 {
                     return NotFound(new
@@ -151,14 +210,13 @@ namespace QMSWebApiCore.Controllers
                         message = "ไม่พบข้อมูล Gate In ที่ต้องการแก้ไข หรือไม่มีการเปลี่ยนแปลงข้อมูล"
                     });
                 }
-
                 return Ok(new
                 {
                     success = true,
                     message = "แก้ไขรถเข้าคลังสินค้า Gate In สำเร็จ",
                     data = new
                     {
-                        barcode = ClsGateIn.Barcode,
+                        barcode = CLS_GATEIN.Barcode,
                         updatedDate = DateTime.UtcNow
                     }
                 });
@@ -192,7 +250,6 @@ namespace QMSWebApiCore.Controllers
             }
             catch (Exception ex)
             {
-                // General error
                 return StatusCode(500, new
                 {
                     success = false,
@@ -203,8 +260,17 @@ namespace QMSWebApiCore.Controllers
         }
 
         [HttpPost("DeleteGateIn")]
-        public async Task<IActionResult> DeleteGateIn([FromBody] M_GateIn ClsGateIn)
+        public async Task<IActionResult> DeleteGateIn([FromBody] M_GateIn CLS_GATEIN)
         {
+            if (string.IsNullOrEmpty(CLS_GATEIN.DCCode))
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    error = "ไม่พบ DCCode สำหรับ Delete Gate In"
+                });
+            }
+
             try
             {
                 if (!ModelState.IsValid)
@@ -218,8 +284,7 @@ namespace QMSWebApiCore.Controllers
                     });
                 }
 
-                var deleted = await _gateService.DeleteGateInAsync(ClsGateIn);
-
+                var deleted = await _gateService.DeleteGateInAsync(CLS_GATEIN);
                 if (!deleted)
                 {
                     return NotFound(new
@@ -238,6 +303,56 @@ namespace QMSWebApiCore.Controllers
             catch (Exception ex)
             {
                 return BadRequest(new
+                {
+                    success = false,
+                    error = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("CheckDuplicateBarcode/{Barcode}/{DCCode}")]
+        public async Task<IActionResult> CheckDuplicateGateInBarcode(string Barcode, string DCCode)
+        {
+            if (string.IsNullOrEmpty(DCCode))
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    error = "ไม่พบ DCCode Gate In สำหรับตรวจสอบข้อมูลซ้ำ"
+                });
+            }
+
+            try
+            {
+                if (string.IsNullOrEmpty(Barcode))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "DCCode is required"
+                    });
+                }
+                bool isDuplicate = await _gateService.CheckDuplicateBarcode(Barcode, DCCode);
+                if (isDuplicate)
+                {
+                    return Ok(new
+                    {
+                        success = true,
+                        isDuplicate = true,
+                        message = $"Barcode: {Barcode} ถูกใช้งานแล้ว!"
+                    });
+                }
+
+                return Ok(new
+                {
+                    success = true,
+                    isDuplicate = false,
+                    message = "Barcode สามารถใช้งานได้"
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
                 {
                     success = false,
                     error = ex.Message

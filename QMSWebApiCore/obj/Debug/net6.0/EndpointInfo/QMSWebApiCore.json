@@ -1,0 +1,3796 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "QMSWebApiCore",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/v1/Dashboard/GetTimeLine/{ActionDate}/{status}/{BigCType}/{PlanGroupNo}/{DCCode}": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "ActionDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "BigCType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PlanGroupNo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/GetDashboard/{ActionDate}/{BigCType}/{GroupNo}/{DCCode}": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "ActionDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "BigCType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "GroupNo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/getAllCountPlan": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/PostStackBarFinishLoadTime": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/PostStackBarFinish": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/PostStackBarRemain": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/GetPlanListRemainFinish": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/GetChartPreCool": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/GetChartTruckOnDock": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/GetChartStartLoad": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/GetChartFinishLoad": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/GetChartEDP": {
+      "post": {
+        "tags": [
+          "Dashboard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Dashboard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Dashboard/GetChartFinishLoad_Old/{ActionDate}/{BigCType}/{DCCode}": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "ActionDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "BigCType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/EDPIn/GetPlanListEDP": {
+      "post": {
+        "tags": [
+          "EDPIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_EDP"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_EDP"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_EDP"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/EDPIn/SearchEDPInByBarcode/{DCcode}/{Barcode}/{ActionDate}": {
+      "get": {
+        "tags": [
+          "EDPIn"
+        ],
+        "parameters": [
+          {
+            "name": "DCcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ActionDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/EDPIn/StampEDPIn": {
+      "post": {
+        "tags": [
+          "EDPIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_EDP"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_EDP"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_EDP"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/EDPIn/StampEDPOut": {
+      "post": {
+        "tags": [
+          "EDPIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_EDP"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_EDP"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_EDP"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/SearchGateIn/{DCCode}/{TruckTypeID}/{StatusGateIn}": {
+      "get": {
+        "tags": [
+          "GateIn"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TruckTypeID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StatusGateIn",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/SearchGateInByBarcode/{Barcode}/{DCCode}": {
+      "get": {
+        "tags": [
+          "GateIn"
+        ],
+        "parameters": [
+          {
+            "name": "Barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/GetBarcodeDetail/{Barcode}/{DCCode}": {
+      "get": {
+        "tags": [
+          "GateIn"
+        ],
+        "parameters": [
+          {
+            "name": "Barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/StampGateIn": {
+      "post": {
+        "tags": [
+          "GateIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/UpdateGateIn": {
+      "put": {
+        "tags": [
+          "GateIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/DeleteGateIn": {
+      "post": {
+        "tags": [
+          "GateIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateIn/CheckDuplicateBarcode/{Barcode}/{DCCode}": {
+      "get": {
+        "tags": [
+          "GateIn"
+        ],
+        "parameters": [
+          {
+            "name": "Barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/SearchGateOutDirect/{DCCode}/{TruckTypeID}/{StatusGateOut}": {
+      "get": {
+        "tags": [
+          "GateOut"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TruckTypeID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StatusGateOut",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/SearchGateOut/{DCCode}/{TruckTypeID}/{StatusGateOut}": {
+      "get": {
+        "tags": [
+          "GateOut"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TruckTypeID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StatusGateOut",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/SearchGateOutByBarcode/{Barcode}/{DCCode}": {
+      "get": {
+        "tags": [
+          "GateOut"
+        ],
+        "parameters": [
+          {
+            "name": "Barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/getGateOutBarcodeDetail/{Barcode}/{DCCode}": {
+      "get": {
+        "tags": [
+          "GateOut"
+        ],
+        "parameters": [
+          {
+            "name": "Barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/getGateOutBarcodeDirectDetail/{Barcode}/{DCCode}/{ActionDate}": {
+      "get": {
+        "tags": [
+          "GateOut"
+        ],
+        "parameters": [
+          {
+            "name": "Barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ActionDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/StampGateOut": {
+      "post": {
+        "tags": [
+          "GateOut"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/StampGateOutDirect": {
+      "post": {
+        "tags": [
+          "GateOut"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/GateOut/DeleteGateIn": {
+      "post": {
+        "tags": [
+          "GateOut"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_GateOut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/LoadOnTruck/GetPlanListFinishPreLoad": {
+      "post": {
+        "tags": [
+          "LoadOnTruck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/LoadOnTruck/GetPlanListLoadInTruck": {
+      "post": {
+        "tags": [
+          "LoadOnTruck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/LoadOnTruck/GetPlanListFinishLoad": {
+      "post": {
+        "tags": [
+          "LoadOnTruck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/LoadOnTruck/StampLoadOnTruck": {
+      "post": {
+        "tags": [
+          "LoadOnTruck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/LoadOnTruck/FinishLoadOnTruck": {
+      "post": {
+        "tags": [
+          "LoadOnTruck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_LoadOnTruck"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Login/GetLogin/{AccountName}/{DCCode}": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "parameters": [
+          {
+            "name": "AccountUserName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "AccountName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Login/getPreCoolPass": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "parameters": [
+          {
+            "name": "Result",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "ErrorMessage",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "AccountCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "AccountUsername",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "AccountPassword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "AccountName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "AccountDCCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreCool/GetPlanListPreCool": {
+      "post": {
+        "tags": [
+          "PreCool"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreCool/StampPreCool": {
+      "post": {
+        "tags": [
+          "PreCool"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreCool/DeletePreCool": {
+      "post": {
+        "tags": [
+          "PreCool"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreCool/CancelPreCoolPass": {
+      "post": {
+        "tags": [
+          "PreCool"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreCool/GetPreCoolFail/{PlanNo}/{DCCode}": {
+      "post": {
+        "tags": [
+          "PreCool"
+        ],
+        "parameters": [
+          {
+            "name": "PlanNo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_Precool"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreLoad/GetPlanListPreLoad": {
+      "post": {
+        "tags": [
+          "PreLoad"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_PreLoad"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_PreLoad"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_PreLoad"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreLoad/GetPreLoadDetail": {
+      "post": {
+        "tags": [
+          "PreLoad"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_PreLoad"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_PreLoad"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_PreLoad"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreLoad/StampPreLoad": {
+      "post": {
+        "tags": [
+          "PreLoad"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_PreLoad"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_PreLoad"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_PreLoad"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreLoad/GetPlanListFinishPreLoad": {
+      "post": {
+        "tags": [
+          "PreLoad"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_FinishPreLoad"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_FinishPreLoad"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_FinishPreLoad"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/PreLoad/StampFinishPreLoad": {
+      "post": {
+        "tags": [
+          "PreLoad"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_FinishPreLoad"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_FinishPreLoad"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_FinishPreLoad"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/GetReportGateIn/{DCCode}/{StatusGateIn}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StatusGateIn",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportRSUIn/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportRSUOut/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportPreCool/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportPreCoolShowStore/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportTruckOnDock/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportPreLoad/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportLoad/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportEDP/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportSummary/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/Report/getReportGateOut/{DCCode}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/RSUIn/SearchRSUInByBarcode/{Barcode}/{DCCode}": {
+      "get": {
+        "tags": [
+          "RSUIn"
+        ],
+        "parameters": [
+          {
+            "name": "Barcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/RSUIn/SearchRSUIn/{TruckTypeID}/{StatusRSU}/{DCCode}": {
+      "get": {
+        "tags": [
+          "RSUIn"
+        ],
+        "parameters": [
+          {
+            "name": "TruckTypeID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StatusRSU",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "DCCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/RSUIn/StampRSUIn": {
+      "post": {
+        "tags": [
+          "RSUIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/RSUIn/StampRSUOut": {
+      "post": {
+        "tags": [
+          "RSUIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/RSUIn/DeleteRSUIn": {
+      "post": {
+        "tags": [
+          "RSUIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/RSUIn/StampRSUInOut": {
+      "post": {
+        "tags": [
+          "RSUIn"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_RSUInOut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/TMSPlan/getTMSPlanListOnDate": {
+      "post": {
+        "tags": [
+          "TMSPlan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TMSPlan"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TMSPlan"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TMSPlan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/TMSPlan/SaveTMSPlan": {
+      "post": {
+        "tags": [
+          "TMSPlan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/M_TMSPlan"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/M_TMSPlan"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/M_TMSPlan"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/TMSPlan/CancelTMSPlan": {
+      "post": {
+        "tags": [
+          "TMSPlan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TMSPlan"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TMSPlan"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TMSPlan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/TruckOnDock/GetPlanListTruckOnDock": {
+      "post": {
+        "tags": [
+          "TruckOnDock"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TruckOnDock"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TruckOnDock"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TruckOnDock"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/TruckOnDock/StampTruckOnDock": {
+      "post": {
+        "tags": [
+          "TruckOnDock"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TruckOnDock"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TruckOnDock"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TruckOnDock"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/TruckOnDock/DeleteGateIn": {
+      "post": {
+        "tags": [
+          "TruckOnDock"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TruckOnDock"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TruckOnDock"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/M_TruckOnDock"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "M_Dashboard": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMSG": {
+            "type": "string",
+            "nullable": true
+          },
+          "planActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "planBigCType": {
+            "type": "string",
+            "nullable": true
+          },
+          "planGroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planCount": {
+            "type": "string",
+            "nullable": true
+          },
+          "planFinish": {
+            "type": "string",
+            "nullable": true
+          },
+          "planRemain": {
+            "type": "string",
+            "nullable": true
+          },
+          "planFinishLoad": {
+            "type": "string",
+            "nullable": true
+          },
+          "planFinishLoadTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "dcCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_EDP": {
+        "type": "object",
+        "properties": {
+          "dcCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMSG": {
+            "type": "string",
+            "nullable": true
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "planNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "planBigCType": {
+            "type": "string",
+            "nullable": true
+          },
+          "planGroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planLoadNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planDockNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "licenseTruck": {
+            "type": "string",
+            "nullable": true
+          },
+          "driverName": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeID": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateInDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuInDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuOutDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckOnDockDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "preLoadDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "startLoadDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "finishLoadDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpInDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpOutDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpRemarkIn": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpRemarkOut": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpInActionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpOutActionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "lpsName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastProcess": {
+            "type": "string",
+            "nullable": true
+          },
+          "search": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_FinishPreLoad": {
+        "type": "object",
+        "properties": {
+          "DCCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "Search": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanBigCType": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "GroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "DockNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadActionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "FinishPreLoadActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "FinishPreLoadActionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "FinishPreLoadStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "FinishPreLoadStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "FinishPreLoadRemark": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_GateIn": {
+        "type": "object",
+        "properties": {
+          "gate_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gateInDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateOutDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "licenseTruck": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rsuid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "edpStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateInRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateOutRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "driverName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "truckTypeID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "truckTypeText": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dcCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "flag": {
+            "type": "boolean"
+          },
+          "gate_status_text": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastProcess": {
+            "type": "string",
+            "nullable": true
+          },
+          "planDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "planLoadNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planGroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planDockNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateInDateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuInDateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuOutDateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckOnDockDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "preLoadDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "loadInTruckDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "loadInTruckFinishDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpInBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpInDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpInRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpOutBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpOutDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpOutRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "license": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_GateOut": {
+        "type": "object",
+        "properties": {
+          "gate_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gateInDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateOutDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "licenseTruck": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rsuid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "edpStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateInRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateOutRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "driverName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "truckTypeID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "truckTypeText": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dcCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "flag": {
+            "type": "boolean"
+          },
+          "gate_status_text": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateInDateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuInDateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuOutDateTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckOnDockDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "preLoadDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "loadInTruckDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "loadInTruckFinishDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "license": {
+            "type": "string",
+            "nullable": true
+          },
+          "planDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "planLoadNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planGroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planDockNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastProcess": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpInBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpInDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpInRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpOutBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpOutDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "edpOutRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "planNo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_LoadOnTruck": {
+        "type": "object",
+        "properties": {
+          "DCCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanGroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanBigCType": {
+            "type": "string",
+            "nullable": true
+          },
+          "Search": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "ActionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "ActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "DockNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee1": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee2": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee3": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee4": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee5": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee6": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee7": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee8": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee9": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee10": {
+            "type": "string",
+            "nullable": true
+          },
+          "Remark": {
+            "type": "string",
+            "nullable": true
+          },
+          "CreateBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadOnTruckStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadOnTruckStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadOnTruckActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadOnTruckFinishDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadOnTruckActionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadOnTruckFinishBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadOnTruckFinishRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadOnTruckRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "FinishPreLoadStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "FinishPreLoadActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreCoolStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "FinishLoadStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "FinishLoadStatusText": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_PreLoad": {
+        "type": "object",
+        "properties": {
+          "DCCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "Search": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanBigCType": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "GroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoadNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "DockNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadActionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee1": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee2": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee3": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee4": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee5": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee6": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee7": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee8": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee9": {
+            "type": "string",
+            "nullable": true
+          },
+          "Employee10": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreCoolStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreCoolStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreLoadRemark": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_Precool": {
+        "type": "object",
+        "properties": {
+          "DCCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "planNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "Search": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanGroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanBigCType": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanLoadNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "ActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanDockNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanPreCool": {
+            "type": "string",
+            "nullable": true
+          },
+          "LastActionPreCool": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanPreCoolCountNotPass": {
+            "type": "string",
+            "nullable": true
+          },
+          "QCID": {
+            "type": "string",
+            "nullable": true
+          },
+          "LicenseTruck": {
+            "type": "string",
+            "nullable": true
+          },
+          "LicenseBehind": {
+            "type": "string",
+            "nullable": true
+          },
+          "TempuratureFront": {
+            "type": "string",
+            "nullable": true
+          },
+          "TempuratureBehind": {
+            "type": "string",
+            "nullable": true
+          },
+          "Remark": {
+            "type": "string",
+            "nullable": true
+          },
+          "RemarkPass": {
+            "type": "string",
+            "nullable": true
+          },
+          "CreateBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "PreCoolStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanPreCoolStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "StoreCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "StoreFormat": {
+            "type": "string",
+            "nullable": true
+          },
+          "StoreName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_RSUInOut": {
+        "type": "object",
+        "properties": {
+          "dcCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "licenseTruck": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "driverName": {
+            "type": "string",
+            "nullable": true
+          },
+          "truckTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateInDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionByRSUIn": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionByRSUOut": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuInDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuOutDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuInRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuOutRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "actionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "gateID": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsuid": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_TMSPlan": {
+        "type": "object",
+        "properties": {
+          "planNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planPrefix": {
+            "type": "string",
+            "nullable": true
+          },
+          "planTypeBigC": {
+            "type": "string",
+            "nullable": true
+          },
+          "planGroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planLoadNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planDockNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "planActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "planStoreCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "planStoreName": {
+            "type": "string",
+            "nullable": true
+          },
+          "planStoreFormat": {
+            "type": "string",
+            "nullable": true
+          },
+          "planTruckType": {
+            "type": "string",
+            "nullable": true
+          },
+          "planPreCool": {
+            "type": "string",
+            "nullable": true
+          },
+          "planOnDock": {
+            "type": "string",
+            "nullable": true
+          },
+          "planStartLoad": {
+            "type": "string",
+            "nullable": true
+          },
+          "planFinishLoad": {
+            "type": "string",
+            "nullable": true
+          },
+          "planDispatch": {
+            "type": "string",
+            "nullable": true
+          },
+          "createBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updateBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "dcCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "flag": {
+            "type": "string",
+            "nullable": true
+          },
+          "planDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "countStore": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "M_TruckOnDock": {
+        "type": "object",
+        "properties": {
+          "DCCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "BarcodeNew": {
+            "type": "string",
+            "nullable": true
+          },
+          "planNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanBigCType": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanLoadNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanGroupNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "PlanDockNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "LicenseTruck": {
+            "type": "string",
+            "nullable": true
+          },
+          "TruckTypeID": {
+            "type": "string",
+            "nullable": true
+          },
+          "TruckTypeText": {
+            "type": "string",
+            "nullable": true
+          },
+          "TruckTypeImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "TruckOnDockRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "TruckOnDockReviseRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "CreateBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "ActionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "PrecoolStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "PrecoolStatusText": {
+            "type": "string",
+            "nullable": true
+          },
+          "TruckOnDockStatusID": {
+            "type": "string",
+            "nullable": true
+          },
+          "TruckOnDockStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "ActualTruckOnDockTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "EDPINStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "EDPOutStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "Search": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

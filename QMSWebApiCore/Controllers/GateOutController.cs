@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using QMSWebApiCore.Models;
 using QMSWebApiCore.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace QMSWebApiCore.Controllers
 {
@@ -18,8 +15,10 @@ namespace QMSWebApiCore.Controllers
         {
             _gateService = gateService;
         }
-        [HttpGet("SearchGateOut/{DCCode}")]
-        public async Task<IActionResult> GetAllGateOut(string DCCode)
+
+        //show list gate in ที่จะ stamp gateout direct
+        [HttpGet("SearchGateOutDirect/{DCCode}/{TruckTypeID}/{StatusGateOut}")]
+        public async Task<IActionResult> GetGateOutDirect(string DCCode ,string TruckTypeID, string StatusGateOut)
         {
             try
             {
@@ -31,7 +30,39 @@ namespace QMSWebApiCore.Controllers
                         error = "DCCode is required"
                     });
                 }
-                var gates = await _gateService.GetAllGateOutAsync(DCCode);
+
+                var gates = await _gateService.GetGateOutDirectAsync(DCCode,TruckTypeID, StatusGateOut);
+                return Ok(new
+                {
+                    success = true,
+                    data = gates,
+                    count = gates.Count
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    error = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("SearchGateOut/{DCCode}/{TruckTypeID}/{StatusGateOut}")]
+        public async Task<IActionResult> GetAllGateOut(string DCCode, string TruckTypeID, string StatusGateOut)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(DCCode))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "DCCode is required"
+                    });
+                }
+                var gates = await _gateService.GetAllGateOutAsync(DCCode, TruckTypeID, StatusGateOut);
                 return Ok(new
                 {
                     success = true,
@@ -62,7 +93,7 @@ namespace QMSWebApiCore.Controllers
                         error = "DCCode is required"
                     });
                 }
-                var gates = await _gateService.GatGateOutByBarcodeOnceAsync(Barcode, DCCode);
+                var gates = await _gateService.GatGateInByBarcodeDetail(Barcode, DCCode);
                 return Ok(new
                 {
                     success = true,
@@ -80,9 +111,72 @@ namespace QMSWebApiCore.Controllers
             }
         }
 
+        //ใช้ค้นหาเพื่อ stamp gate out ที่ยื่น EDP แล้ว
+        [HttpGet("getGateOutBarcodeDetail/{Barcode}/{DCCode}")]
+        public async Task<IActionResult> getGateOutDetail(string Barcode, string DCCode)
+        {   
+            try
+            {
+                if (string.IsNullOrEmpty(DCCode))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "DCCode is required"
+                    });
+                }
+                var gates = await _gateService.checkStatusBarcodeDetail(Barcode, DCCode);
+                return Ok(new
+                {
+                    success = true,
+                    data = gates,
+                    count = gates.Count
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    error = ex.Message
+                });
+            }
+        }
+
+        //ใช้ค้นหาเพื่อ stamp gate out Direct 
+        [HttpGet("getGateOutBarcodeDirectDetail/{Barcode}/{DCCode}/{ActionDate}")]
+        public async Task<IActionResult> getGateOutBarcodeDirectDetail(string Barcode, string DCCode, string ActionDate)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(DCCode))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "DCCode is required"
+                    });
+                }
+                var gates = await _gateService.GatGateOutByBarcodeDirect(Barcode, DCCode, ActionDate);
+                return Ok(new
+                {
+                    success = true,
+                    data = gates,
+                    count = gates.Count
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    error = ex.Message
+                });
+            }
+        }
 
         [HttpPost("StampGateOut")]
-        public async Task<IActionResult> StampGateOut([FromBody] M_GateOut ClsGateOut)
+        public async Task<IActionResult> StampGateOut([FromBody] M_GateOut CLS_GATEOUT)
         {
             try
             {
@@ -101,7 +195,7 @@ namespace QMSWebApiCore.Controllers
                 }
 
                 // Validate Barcode specifically
-                if (string.IsNullOrEmpty(ClsGateOut?.Barcode))
+                if (string.IsNullOrEmpty(CLS_GATEOUT?.Barcode))
                 {
                     return BadRequest(new
                     {
@@ -110,7 +204,7 @@ namespace QMSWebApiCore.Controllers
                     });
                 }
 
-                var updated = await _gateService.StampGateOutAsync(ClsGateOut);
+                var updated = await _gateService.StampGateOutAsync(CLS_GATEOUT);
 
                 if (!updated)
                 {
@@ -127,7 +221,7 @@ namespace QMSWebApiCore.Controllers
                     message = "แก้ไขรถเข้าคลังสินค้า Gate In สำเร็จ",
                     data = new
                     {
-                        barcode = ClsGateOut.Barcode,
+                        barcode = CLS_GATEOUT.Barcode,
                         updatedDate = DateTime.UtcNow
                     }
                 });
@@ -172,7 +266,7 @@ namespace QMSWebApiCore.Controllers
         }
 
         [HttpPost("StampGateOutDirect")]
-        public async Task<IActionResult> StampGateOutDirect([FromBody] M_GateOut ClsGateOut)
+        public async Task<IActionResult> StampGateOutDirect([FromBody] M_GateOut CLS_GATEOUT)
         {
             try
             {
@@ -191,7 +285,7 @@ namespace QMSWebApiCore.Controllers
                 }
 
                 // Validate Barcode specifically
-                if (string.IsNullOrEmpty(ClsGateOut?.Barcode))
+                if (string.IsNullOrEmpty(CLS_GATEOUT?.Barcode))
                 {
                     return BadRequest(new
                     {
@@ -200,7 +294,7 @@ namespace QMSWebApiCore.Controllers
                     });
                 }
 
-                var updated = await _gateService.StampGateOutDirectAsync(ClsGateOut);
+                var updated = await _gateService.StampGateOutDirectAsync(CLS_GATEOUT);
 
                 if (!updated)
                 {
@@ -217,7 +311,7 @@ namespace QMSWebApiCore.Controllers
                     message = "แก้ไขรถเข้าคลังสินค้า Gate In สำเร็จ",
                     data = new
                     {
-                        barcode = ClsGateOut.Barcode,
+                        barcode = CLS_GATEOUT.Barcode,
                         updatedDate = DateTime.UtcNow
                     }
                 });
@@ -262,7 +356,7 @@ namespace QMSWebApiCore.Controllers
         }
 
         [HttpPost("DeleteGateIn")]
-        public async Task<IActionResult> DeleteGateIn([FromBody] M_GateOut ClsGateOut)
+        public async Task<IActionResult> DeleteGateIn([FromBody] M_GateOut CLS_GATEOUT)
         {
             try
             {
@@ -277,7 +371,7 @@ namespace QMSWebApiCore.Controllers
                     });
                 }
 
-                var deleted = await _gateService.DeleteGateOutAsync(ClsGateOut);
+                var deleted = await _gateService.DeleteGateOutAsync(CLS_GATEOUT);
 
                 if (!deleted)
                 {

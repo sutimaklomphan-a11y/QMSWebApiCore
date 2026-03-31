@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OutboundQMSModel
+{
+    public class M_ReportPreLoad
+    {
+        public string PreLoadActionTime { get; set; }
+        public string FinishPreLoadActionTime { get; set; }
+        public string Barcode { get; set; }
+
+        public string BigCType { get; set; }
+        public string Group { get; set; }        
+        public string LoadNo { get; set; }
+        public string DockNo { get; set; }        
+        public string LicenseTruck { get; set; }
+        public string TruckTypeName { get; set; }
+        public string Loader { get; set; }
+        public string PreLoadStatus { get; set; }
+        public string Remark { get; set; }
+
+        public string FinishPreloadRemark { get; set; }
+
+
+
+    }
+}

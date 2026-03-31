@@ -1,35 +1,53 @@
-using Microsoft.EntityFrameworkCore;
 using QMSWebApiCore.Data;
-using QMSWebApiCore.Services;
 using QMSWebApiCore.Models;
+using QMSWebApiCore.Services;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Npgsql;
+using static QMSWebApiCore.Services.PreLoadRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 
 // Configure PostgreSQL
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Configure DBOptions
 builder.Services.Configure<DBOptions>(
     builder.Configuration.GetSection("Database"));
 
 // Register GateService
-builder.Services.AddScoped<IGateInRepository, GateRepository>();
+builder.Services.AddScoped<IGateInRepository, GateInRepository>();
 builder.Services.AddScoped<IGateOutRepository,GateOutRepository>();
 builder.Services.AddScoped<IPreCoolRepository, PreCoolRepository>();
-
+builder.Services.AddScoped<IRSUInRepository, RSUInRepository>();
+builder.Services.AddScoped<ITruckOnDockRepository, TruckOnDockRepository>();
+builder.Services.AddScoped<IPreLoadRepository, PreloadRepository>();
+builder.Services.AddScoped<ILoadOnTruckRepository, LoadOnTruckRepository>();
+builder.Services.AddScoped<IEDPRepository, EDPRepository>();
+builder.Services.AddScoped<ITMSPlanRepository, TMSPlanRepository>();
+builder.Services.AddScoped<IReportQMSRepository, ReportQMSRepository>();
+builder.Services.AddScoped<IDashboardQMSRepository, DashboardRepository>();
 
 // Configure CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.SetIsOriginAllowed(origin => true) // Allow any origin for development
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
 
